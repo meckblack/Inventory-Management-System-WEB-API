@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<a href="@Url.Action("Create", "Suppliers")">Add</a>
+<br /><br />
+
+<table cellpadding="2" cellspacing="2">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                Address
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var supplier in ViewBag.SupplierList)
+        {
+            <tr>
+                <td>
+                    @supplier.SupplierId
+                </td>
+                <td>
+                    @supplier.SupplierName
+                </td>
+                <td>
+                    @supplier.SupplierContact
+                </td>
+                <td>
+                    @supplier.SupplierAddress
+                </td>
+                <td>
+                    Delete | Edit
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
