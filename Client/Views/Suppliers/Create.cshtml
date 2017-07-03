@@ -14,16 +14,33 @@
             <th>
                 @Html.LabelFor(model => model.supplier.SupplierName)
             </th>
+            <td>
+                @Html.TextBoxFor(model => model.supplier.SupplierName)
+            </td>
         </tr>
         <tr>
             <th>
                 @Html.LabelFor(model => model.supplier.SupplierContact)
             </th>
+            <td>
+                @Html.TextBoxFor(model => model.supplier.SupplierContact)
+            </td>
         </tr>
         <tr>
             <th>
                @Html.LabelFor(model => model.supplier.SupplierAddress)
             </th>
+            <td>
+                @Html.TextBoxFor(model => model.supplier.SupplierAddress)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <input type="submit" value="Save" />
+            </td>
         </tr>
     </thead>
     </table>

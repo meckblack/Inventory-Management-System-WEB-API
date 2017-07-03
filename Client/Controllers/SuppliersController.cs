@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Client.Models;
+using Client.ViewModels;
 
 namespace Client.Controllers
 {
@@ -21,6 +22,14 @@ namespace Client.Controllers
         public ActionResult Create()
         {
             return View("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Create(SupplierViewModel svm)
+        {
+            SupplierClient sc = new SupplierClient();
+            sc.Create(svm.supplier);
+            return RedirectToAction("Index");
         }
     }
 }
