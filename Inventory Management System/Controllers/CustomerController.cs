@@ -2,6 +2,8 @@
 using Inventory_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -33,7 +35,7 @@ namespace Inventory_Management_System.Controllers
             return Ok(customer);
         }
 
-        // Create: api/Customer
+        // POST: api/Customer
         [ResponseType(typeof(Customer))]
         public IHttpActionResult PostCustomer (Customer customer)
         {
@@ -46,6 +48,45 @@ namespace Inventory_Management_System.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
+        }
+
+        //PUT: api/Customer/5
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult PutCustomer (int id, Customer customer)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(id != customer.CustomerId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(customer).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!CustomerExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool CustomerExists(int id)
+        {
+            return db.Customer.Count(c => c.CustomerId == id) > 0;
         }
     }
 }
