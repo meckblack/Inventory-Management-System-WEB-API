@@ -17,11 +17,14 @@ namespace Inventory_Management_System.DAL
         }
 
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Category> Category { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+        
 
-        public System.Data.Entity.DbSet<Inventory_Management_System.Models.Supplier> Suppliers { get; set; }
     }
 }
