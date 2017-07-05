@@ -1,0 +1,46 @@
+﻿@model Client.ViewModels.CategoryViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var x = 1;
+}
+
+<h2>Index</h2>
+
+
+<a href="@Url.Action("Create", "Category")">Add</a>
+<br /><br />
+
+<table cellpadding="2" cellspacing="2">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var category in ViewBag.CategoryList)
+       { 
+           <tr>
+                <td>
+                    @(x++)
+                </td>
+                <td>
+                    @category.CategoryName
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "Category", new { Id = category.CategoryId })">Delete</a>
+                    |
+                    <a href="@Url.Action("Edit", "Category", new { Id = category.CategoryId })">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

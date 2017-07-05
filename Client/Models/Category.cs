@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Inventory_Management_System.Models
+namespace Client.Models
 {
-    public partial class Category
+    public class Category
     {
         [Key]
         public int CategoryId { get; set; }
