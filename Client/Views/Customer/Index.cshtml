@@ -1,8 +1,8 @@
 ﻿@model Client.ViewModels.CustomerViewModel
 
-
 @{
     ViewBag.Title = "Index";
+    var x = 1;
 }
 
 <h2>Index</h2>
@@ -33,7 +33,7 @@
         {
             <tr>
                 <td>
-                    @customer.CustomerId
+                    @(x++)
                 </td>
                 <td>
                     @customer.CustomerName

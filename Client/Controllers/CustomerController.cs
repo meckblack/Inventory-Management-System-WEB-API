@@ -13,15 +13,15 @@ namespace Client.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            CustomerClient cs = new CustomerClient();
-            ViewBag.CustomerList = cs.FindAll();
+            CustomerClient cc = new CustomerClient();
+            ViewBag.CustomerList = cc.FindAll();
             return View();
         }
 
         public ActionResult Details(int Id)
         {
-            CustomerClient cs = new CustomerClient();
-            ViewBag.CustomerDetail = cs.Find(Id);
+            CustomerClient cc = new CustomerClient();
+            ViewBag.CustomerDetail = cc.Find(Id);
             return View("Details");
         }
 
@@ -34,8 +34,15 @@ namespace Client.Controllers
         [HttpPost]
         public ActionResult Create(CustomerViewModel cvm)
         {
-            CustomerClient sc = new CustomerClient();
-            sc.Create(cvm.customer);
+            CustomerClient cc = new CustomerClient();
+            cc.Create(cvm.customer);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            CustomerClient cc = new CustomerClient();
+            cc.Delete(id);
             return RedirectToAction("Index");
         }
     }
