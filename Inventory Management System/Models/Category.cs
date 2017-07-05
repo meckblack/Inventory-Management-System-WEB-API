@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Inventory_Management_System.Models
 {
@@ -10,5 +11,7 @@ namespace Inventory_Management_System.Models
         [Required(ErrorMessage = "Name field required")]
         [Display(Name = "Name")]
         public string CategoryName { get; set; }
+
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

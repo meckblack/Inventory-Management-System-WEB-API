@@ -156,17 +156,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707051512547_Migrationone.cs" />
-    <Compile Include="Migrations\201707051512547_Migrationone.Designer.cs">
-      <DependentUpon>201707051512547_Migrationone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707051514158_MigrationTwo.cs" />
-    <Compile Include="Migrations\201707051514158_MigrationTwo.Designer.cs">
-      <DependentUpon>201707051514158_MigrationTwo.cs</DependentUpon>
+    <Compile Include="Migrations\201707051534396_MigrationThree.cs" />
+    <Compile Include="Migrations\201707051534396_MigrationThree.Designer.cs">
+      <DependentUpon>201707051534396_MigrationThree.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,11 +218,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707051512547_Migrationone.resx">
-      <DependentUpon>201707051512547_Migrationone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707051514158_MigrationTwo.resx">
-      <DependentUpon>201707051514158_MigrationTwo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707051534396_MigrationThree.resx">
+      <DependentUpon>201707051534396_MigrationThree.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
