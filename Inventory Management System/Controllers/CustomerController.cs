@@ -32,5 +32,20 @@ namespace Inventory_Management_System.Controllers
 
             return Ok(customer);
         }
+
+        // Create: api/Customer
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult PostCustomer (Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Customer.Add(customer);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
+        }
     }
 }
