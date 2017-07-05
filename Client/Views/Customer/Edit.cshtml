@@ -1,0 +1,49 @@
+﻿@model Client.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Customer", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.customer.CustomerId)
+
+    <table cellpadding="2" cellspacing="2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.customer.CustomerName)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.customer.CustomerName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.customer.CustomerContact)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.customer.CustomerContact)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.customer.CustomerAddress)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.customer.CustomerAddress)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input type="submit" value="Update" />
+                </td>
+            </tr>
+        </thead>
+    </table>
+}

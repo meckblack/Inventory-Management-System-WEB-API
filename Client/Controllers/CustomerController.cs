@@ -45,5 +45,22 @@ namespace Client.Controllers
             cc.Delete(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            CustomerClient cc = new CustomerClient();
+            CustomerViewModel cvm = new CustomerViewModel();
+            cvm.customer = cc.Find(id); 
+            return View("Edit", cvm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CustomerViewModel cvm)
+        {
+            CustomerClient cc = new CustomerClient();
+            cc.Edit(cvm.customer);
+            return RedirectToAction("Index");
+        }
     }
 }
