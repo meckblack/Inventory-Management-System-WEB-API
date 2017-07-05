@@ -88,5 +88,31 @@ namespace Inventory_Management_System.Controllers
         {
             return db.Customer.Count(c => c.CustomerId == id) > 0;
         }
+
+        //DELETE: api/Customer/5
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult DeleteCustomer(int id, Customer customer)
+        {
+            customer = db.Customer.Find(id);
+            if(customer == null)
+            {
+                return NotFound();
+            }
+
+            db.Customer.Remove(customer);
+            db.SaveChanges();
+
+            return Ok(customer);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }
