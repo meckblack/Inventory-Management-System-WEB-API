@@ -10,7 +10,7 @@ namespace Client.Controllers
         public ActionResult Index()
         {
             SupplierClient sc = new SupplierClient();
-            ViewBag.SupplierList = sc.findAll();
+            ViewBag.SupplierList = sc.FindAll();
             return View();
         }
 
@@ -29,19 +29,19 @@ namespace Client.Controllers
         }
 
 
-        public ActionResult Delete(int Id)
+        public ActionResult Delete(int id)
         {
             SupplierClient sc = new SupplierClient();
-            sc.Delete(Id);
+            sc.Delete(id);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int id)
         {
             SupplierClient sc = new SupplierClient();
             SupplierViewModel svm = new SupplierViewModel();
-            svm.supplier = sc.find(Id);
+            svm.supplier = sc.Find(id);
             return View("Edit", svm);
         }
 

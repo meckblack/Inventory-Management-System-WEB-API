@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -29,7 +28,7 @@ namespace Client.Models
             }
         }
 
-        public Customer Find(int Id)
+        public Customer Find(int id)
         {
             try
             {
@@ -37,7 +36,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("customer/" + Id).Result;
+                HttpResponseMessage response = client.GetAsync("customer/" + id).Result;
                 if (response.IsSuccessStatusCode)
                     return response.Content.ReadAsAsync<Customer>().Result;
                 return null;

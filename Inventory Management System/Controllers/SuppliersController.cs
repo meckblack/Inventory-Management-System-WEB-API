@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Inventory_Management_System.DAL;
+using Inventory_Management_System.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Inventory_Management_System.DAL;
-using Inventory_Management_System.Models;
 
 namespace Inventory_Management_System.Controllers
 {
@@ -36,8 +32,23 @@ namespace Inventory_Management_System.Controllers
             return Ok(supplier);
         }
 
+        // POST: api/Suppliers
+        [ResponseType(typeof(Supplier))]
+        public IHttpActionResult PostSupplier(Supplier supplier)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Suppliers.Add(supplier);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = supplier.SupplierId }, supplier);
+        }
+
         // PUT: api/Suppliers/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(Supplier))]
         public IHttpActionResult PutSupplier(int id, Supplier supplier)
         {
             if (!ModelState.IsValid)
@@ -71,19 +82,9 @@ namespace Inventory_Management_System.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Suppliers
-        [ResponseType(typeof(Supplier))]
-        public IHttpActionResult PostSupplier(Supplier supplier)
+        private bool SupplierExists(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Suppliers.Add(supplier);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = supplier.SupplierId }, supplier);
+            return db.Suppliers.Count(e => e.SupplierId == id) > 0;
         }
 
         // DELETE: api/Suppliers/5
@@ -111,9 +112,6 @@ namespace Inventory_Management_System.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SupplierExists(int id)
-        {
-            return db.Suppliers.Count(e => e.SupplierId == id) > 0;
-        }
+       
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 
 namespace Client.Models
@@ -12,7 +9,7 @@ namespace Client.Models
     {
         private string BASE_URL = "http://localhost:64448/api/";
 
-        public IEnumerable<Supplier> findAll()
+        public IEnumerable<Supplier> FindAll()
         {
             try
             {
@@ -31,7 +28,7 @@ namespace Client.Models
             }
         }
 
-        public Supplier find(int Id)
+        public Supplier Find(int id)
         {
             try
             {
@@ -39,7 +36,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("suppliers/" + Id).Result;
+                HttpResponseMessage response = client.GetAsync("suppliers/" + id).Result;
                 if (response.IsSuccessStatusCode)
                     return response.Content.ReadAsAsync<Supplier>().Result;
                 return null;
@@ -68,6 +65,24 @@ namespace Client.Models
             }
         }
 
+        public bool Delete(int id)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.DeleteAsync("suppliers/" +
+                    id).Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool Edit(Supplier supplier)
         {
             try
@@ -76,7 +91,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PutAsJsonAsync("suppliers" + supplier.SupplierId,
+                HttpResponseMessage response = client.PutAsJsonAsync("suppliers/" + supplier.SupplierId,
                     supplier).Result;
                 return response.IsSuccessStatusCode;
             }
@@ -86,21 +101,6 @@ namespace Client.Models
             }
         }
 
-        public bool Delete(int Id)
-        {
-            try
-            {
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(BASE_URL);
-                client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.DeleteAsync("suppliers" + Id).Result;
-                return response.IsSuccessStatusCode;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        
     }
 }

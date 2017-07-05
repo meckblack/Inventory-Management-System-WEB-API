@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var x = 1;
 }
 
 <h2>Index</h2>
@@ -31,7 +32,7 @@
         {
             <tr>
                 <td>
-                    @supplier.SupplierId
+                    @(x++)
                 </td>
                 <td>
                     @supplier.SupplierName
@@ -43,9 +44,9 @@
                     @supplier.SupplierAddress
                 </td>
                 <td>
-                    <a  href="@Url.Action("Delete", "Suppliers", new { Id = supplier.SupplierId })" >Delete</a> 
+                    <a  href="@Url.Action("Delete", "Suppliers", new { id = supplier.SupplierId })" >Delete</a> 
                     | 
-                    <a href="@Url.Action("Edit", "Suppliers", new { Id = supplier.SupplierId })" >Edit</a> 
+                    <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.SupplierId })" >Edit</a> 
                 </td>
             </tr>
         }
