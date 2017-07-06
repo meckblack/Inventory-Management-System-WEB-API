@@ -89,8 +89,28 @@ namespace Inventory_Management_System.Controllers
 
 
         // DELETE: api/Category/5
-        public void Delete(int id)
+        [ResponseType(typeof(Category))]
+        public IHttpActionResult DeleteCategory(int id, Category category)
         {
+            category = db.Category.Find(id);
+            if(category == null)
+            {
+                return NotFound();
+            }
+
+            db.Category.Remove(category);
+            db.SaveChanges();
+
+            return Ok(category);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
