@@ -39,25 +39,19 @@ namespace Client.Controllers
         }
 
         // GET: Location/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(int id, LocationClient lc, LocationViewModel lvm)
         {
-            return View();
+            lvm.location = lc.Find(id);
+            return View("Edit", lvm);
         }
 
         // POST: Location/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(LocationClient lc, LocationViewModel lvm)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            lc.Edit(lvm.location);
+            return RedirectToAction("Index");
         }
 
         // GET: Location/Delete/5

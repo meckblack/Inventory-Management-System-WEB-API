@@ -91,8 +91,19 @@ namespace Inventory_Management_System.Controllers
         }
 
         // DELETE: api/Location/5
-        public void Delete(int id)
+        [ResponseType(typeof(Location))]
+        public IHttpActionResult DeleteLocation(int id, Location location)
         {
+            location = db.Location.Find(id);
+            if(location == null)
+            {
+                return NotFound();
+            }
+
+            db.Location.Remove(location);
+            db.SaveChanges();
+
+            return Ok(location);
         }
     }
 }
