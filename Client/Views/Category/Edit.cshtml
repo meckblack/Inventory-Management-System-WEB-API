@@ -1,0 +1,31 @@
+﻿@model Client.ViewModels.CategoryViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+{
+    <table cellpadding="2" cellspacing="2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.category.CategoryName)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.category.CategoryName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </thead>
+    </table>
+}
