@@ -149,6 +149,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\DBInitializer.cs" />
@@ -160,9 +161,18 @@
     <Compile Include="Migrations\201707051534396_MigrationThree.Designer.cs">
       <DependentUpon>201707051534396_MigrationThree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707061312145_MigrationFour.cs" />
+    <Compile Include="Migrations\201707061312145_MigrationFour.Designer.cs">
+      <DependentUpon>201707061312145_MigrationFour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707061327499_MigrationFive.cs" />
+    <Compile Include="Migrations\201707061327499_MigrationFive.Designer.cs">
+      <DependentUpon>201707061327499_MigrationFive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,6 +230,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707051534396_MigrationThree.resx">
       <DependentUpon>201707051534396_MigrationThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707061312145_MigrationFour.resx">
+      <DependentUpon>201707061312145_MigrationFour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707061327499_MigrationFive.resx">
+      <DependentUpon>201707061327499_MigrationFive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,6 +15,8 @@ namespace Inventory_Management_System.DAL
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Location> Location { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
