@@ -1,4 +1,4 @@
-﻿@model Client.ViewModels.CategoryViewModel
+﻿@model Client.ViewModels.LocationViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 
 <h2>Index</h2>
 
-<a href="@Url.Action("Create", "Category")">Add</a>
+<a href="@Url.Action("Create", "Location")">Add</a>
 <br /><br />
 <table>
     <thead>
@@ -16,24 +16,24 @@
                 ID
             </th>
             <th>
-                @Html.DisplayFor(model => model.category.CategoryName)
+                @Html.DisplayFor(model => model.location.LocationName)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var category in ViewBag.CategoryList)
+        @foreach (var location in ViewBag.LocationList)
         {
             <tr>
                 <td>
                     @(x++)
                 </td>
                 <td>
-                    @category.CategoryName
+                    @location.LocationName
                 </td>
                 <td>
-                    <a href="@Url.Action("Delete", "Category", new { Id = category.CategoryId })">Delete</a>
+                    <a href="@Url.Action("Delete", "Location", new { Id = location.LocationId })">Delete</a>
                     |
-                    <a href="@Url.Action("Edit", "Category", new { Id = category.CategoryId })">Edit</a>
+                    <a href="@Url.Action("Edit", "Location", new { Id = location.LocationId })">Edit</a>
                 </td>
             </tr>
         }
