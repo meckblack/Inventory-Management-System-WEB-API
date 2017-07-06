@@ -1,6 +1,6 @@
-﻿using Client.Models;
+﻿using System.Web.Mvc;
+using Client.Models;
 using Client.ViewModels;
-using System.Web.Mvc;
 
 namespace Client.Controllers
 {
@@ -36,6 +36,14 @@ namespace Client.Controllers
 
         }
 
+        public ActionResult Delete(int id)
+        {
+            CategoryClient cc = new CategoryClient();
+            cc.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+
         // GET: Category/Edit/5
         [HttpGet]
         public ActionResult Edit(int id, CategoryClient cc, CategoryViewModel cvm)
@@ -52,26 +60,7 @@ namespace Client.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Category/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Category/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+     
+      
     }
 }

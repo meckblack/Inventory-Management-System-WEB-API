@@ -38,7 +38,7 @@ namespace Inventory_Management_System.Controllers
         [ResponseType(typeof(Category))]
         public IHttpActionResult PostCateogry(Category category)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

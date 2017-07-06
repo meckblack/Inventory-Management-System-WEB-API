@@ -33,6 +33,7 @@ namespace Client.Controllers
             CustomerClient cc = new CustomerClient();
             cc.Create(cvm.customer);
             return RedirectToAction("Index");
+
         }
 
         public ActionResult Delete(int id)

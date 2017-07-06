@@ -65,6 +65,25 @@ namespace Client.Models
             }
         }
 
+        public bool Delete(int id)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.DeleteAsync("category/" +
+                    id).Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
         public bool Edit(Category category)
         {
             try
