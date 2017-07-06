@@ -35,8 +35,18 @@ namespace Inventory_Management_System.Controllers
         }
 
         // POST: api/Location
-        public void Post([FromBody]string value)
+        [ResponseType(typeof(Location))]
+        public IHttpActionResult PostLocation(Location location)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Location.Add(location);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = location.LocationId }, location);
         }
 
         // PUT: api/Location/5
