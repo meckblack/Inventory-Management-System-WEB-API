@@ -52,8 +52,9 @@ namespace Client.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(CustomerViewModel cvm)
+        public ActionResult Edit()
         {
+            CustomerViewModel cvm = new CustomerViewModel();
             CustomerClient cc = new CustomerClient();
             cc.Edit(cvm.customer);
             return RedirectToAction("Index");

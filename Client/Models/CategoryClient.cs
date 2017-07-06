@@ -28,6 +28,25 @@ namespace Client.Models
             }
         }
 
+        public Category Find(int id)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync("category/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                    return response.Content.ReadAsAsync<Category>().Result;
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool Create(Category category)
         {
             try
@@ -37,6 +56,24 @@ namespace Client.Models
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = client.PostAsJsonAsync("category",
+                    category).Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool Edit(Category category)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.PutAsJsonAsync("category/" + category.CategoryId,
                     category).Result;
                 return response.IsSuccessStatusCode;
             }

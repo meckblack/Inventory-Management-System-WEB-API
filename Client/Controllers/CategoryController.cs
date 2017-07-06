@@ -37,25 +37,19 @@ namespace Client.Controllers
         }
 
         // GET: Category/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(int id, CategoryClient cc, CategoryViewModel cvm)
         {
-            return View();
+            cvm.category = cc.Find(id);
+            return View("Edit", cvm);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CategoryClient cc, CategoryViewModel cvm)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            cc.Edit(cvm.category);
+            return RedirectToAction("Index");
         }
 
         // GET: Category/Delete/5
