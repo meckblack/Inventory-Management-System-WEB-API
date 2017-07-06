@@ -19,6 +19,7 @@ namespace Inventory_Management_System.Controllers
         // GET: api/Category
         public IQueryable<Category> GetCategory()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.Category;
         }
 

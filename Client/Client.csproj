@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,6 +205,8 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerClient.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\LocationClient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierClient.cs" />
@@ -211,6 +214,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Location\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
