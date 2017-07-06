@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,23 +27,15 @@ namespace Client.Controllers
         // GET: Location/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Location/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(LocationViewModel lvm, LocationClient lc)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            lc.Create(lvm.location);
+            return RedirectToAction("Index");
         }
 
         // GET: Location/Edit/5

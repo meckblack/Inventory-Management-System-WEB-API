@@ -2,6 +2,8 @@
 using Inventory_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -50,8 +52,42 @@ namespace Inventory_Management_System.Controllers
         }
 
         // PUT: api/Location/5
-        public void Put(int id, [FromBody]string value)
+        [ResponseType(typeof(Location))]
+        public IHttpActionResult PutLocation(int id, Location location)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != location.LocationId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(location).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!LocationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool LocationExists(int id)
+        {
+            return db.Location.Count(c => c.LocationId == id) > 0;
         }
 
         // DELETE: api/Location/5

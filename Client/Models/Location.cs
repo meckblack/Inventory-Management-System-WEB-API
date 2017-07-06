@@ -8,6 +8,7 @@ namespace Client.Models
         public int LocationId { get; set; }
 
         [Required(ErrorMessage="Name field required")]
+        [Display(Name ="Name")]
         public string LocationName { get; set; }
     }
 }
