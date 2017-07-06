@@ -1,24 +1,37 @@
-﻿using System;
+﻿using Inventory_Management_System.DAL;
+using Inventory_Management_System.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace Inventory_Management_System.Controllers
 {
     public class LocationController : ApiController
     {
+
+        private IMS_DB db = new IMS_DB();
+
         // GET: api/Location
-        public IEnumerable<string> Get()
+        public IQueryable<Location> GetLocation()
         {
-            return new string[] { "value1", "value2" };
+            return db.Location;
         }
 
         // GET: api/Location/5
-        public string Get(int id)
+        [ResponseType(typeof(Location))]
+        public IHttpActionResult GetLocation(int id, Location location)
         {
-            return "value";
+            location = db.Location.Find(id);
+            if(location == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(location);
         }
 
         // POST: api/Location
