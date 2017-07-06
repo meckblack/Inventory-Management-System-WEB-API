@@ -2,6 +2,8 @@
 using Inventory_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -47,13 +49,44 @@ namespace Inventory_Management_System.Controllers
             return CreatedAtRoute("DefaultApi", new { id = category.CategoryId }, category);
         }
 
-
-
-
-        // PUT: api/Category/5
-        public void Put(int id, [FromBody]string value)
+        //PUT: api/CaTEGORY/5
+        [ResponseType(typeof(Category))]
+        public IHttpActionResult PutCategory(int id, Category category)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(id != category.CategoryId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(category).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!CategoryExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return StatusCode(HttpStatusCode.NoContent);
         }
+
+        private bool CategoryExists(int id)
+        {
+            return db.Category.Count(c => c.CategoryId == id) > 0;
+        }
+
 
         // DELETE: api/Category/5
         public void Delete(int id)
