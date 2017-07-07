@@ -38,42 +38,31 @@ namespace Client.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(int id)
+        {
+            LocationClient lc = new LocationClient();
+            lc.Delete(id);
+            return RedirectToAction("Index");
+        }
+
         // GET: Location/Edit/5
         [HttpGet]
-        public ActionResult Edit(int id, LocationClient lc, LocationViewModel lvm)
+        public ActionResult Edit(int id)
         {
+            LocationClient lc = new LocationClient();
+            LocationViewModel lvm = new LocationViewModel();
             lvm.location = lc.Find(id);
             return View("Edit", lvm);
         }
 
         // POST: Location/Edit/5
         [HttpPost]
-        public ActionResult Edit(LocationClient lc, LocationViewModel lvm)
+        public ActionResult Edit(LocationViewModel lvm)
         {
+            LocationClient lc = new LocationClient();
             lc.Edit(lvm.location);
             return RedirectToAction("Index");
         }
-
-        // GET: Location/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Location/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

@@ -25,9 +25,9 @@ namespace Inventory_Management_System.Controllers
 
         // GET: api/Location/5
         [ResponseType(typeof(Location))]
-        public IHttpActionResult GetLocation(int id, Location location)
+        public IHttpActionResult GetLocation(int id)
         {
-            location = db.Location.Find(id);
+            Location location = db.Location.Find(id);
             if(location == null)
             {
                 return NotFound();
