@@ -2,7 +2,7 @@
 
 namespace Inventory_Management_System.Models
 {
-    public class Location
+    public partial class Location
     {
         [Key]
         public int LocationId { get; set; }
