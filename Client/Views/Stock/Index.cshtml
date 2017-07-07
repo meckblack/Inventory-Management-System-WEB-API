@@ -1,0 +1,70 @@
+﻿@model Client.ViewModels.StockViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var x = 1;
+}
+
+<h2>Index</h2>
+
+
+<a href="@Url.Action("Create", "Stock")">Add</a>
+<br /><br />
+
+<table cellpadding="2" cellspacing="2">
+    <thead>
+        <tr>
+            <th>
+                S/N
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock.SupplierId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock.StockBuyingRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock.StockSellingRate)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in ViewBag.StockList)
+        {
+            <tr>
+                <td>
+                    @(x++)
+                </td>
+                <td>
+                    @stock.StockCategory
+                </td>
+                <td>
+                    @stock.StockProduct
+                </td>
+                <td>
+                    @stock.StockSupplier
+                </td>
+                <td>
+                    @stock.StockBuyingRate
+                </td>
+                <td>
+                    @stock.StockSellingRate
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "Stock", new { id = stock.StockId })">Delete</a>
+                    |
+                    <a href="@Url.Action("Edit", "Stock", new { id = stock.StockId })">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -13,6 +13,7 @@ namespace Inventory_Management_System.Controllers
         // GET: api/Stock
         public IQueryable<Stock> GetStock()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.Stock;
         }
 

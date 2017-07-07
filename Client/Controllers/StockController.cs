@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,26 +26,22 @@ namespace Client.Controllers
 
 
         // GET: Stock/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Stock/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(StockViewModel svm)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            StockClient sc = new StockClient();
+            sc.Create(svm.stock);
+            return RedirectToAction("Index");
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
+
 
         // GET: Stock/Edit/5
         public ActionResult Edit(int id)
