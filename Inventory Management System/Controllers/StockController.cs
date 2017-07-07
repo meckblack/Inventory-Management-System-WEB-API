@@ -1,4 +1,7 @@
 ﻿using System.Linq;
+using System.Data.Entity;
+using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Web.Http;
 using Inventory_Management_System.DAL;
 using Inventory_Management_System.Models;
@@ -13,8 +16,7 @@ namespace Inventory_Management_System.Controllers
         // GET: api/Stock
         public IQueryable<Stock> GetStock()
         {
-            db.Configuration.ProxyCreationEnabled = false;
-            return db.Stock;
+            return db.Stock.Include(s => s.StockCategory).Include(s => s.StockProduct).Include(s => s.StockSupplier);
         }
 
         // GET: api/Stock/5
@@ -22,7 +24,7 @@ namespace Inventory_Management_System.Controllers
         public IHttpActionResult GetStock(int id)
         {
             Stock stock = db.Stock.Find(id);
-            if(stock == null)
+            if (stock == null)
             {
                 return NotFound();
             }
