@@ -14,14 +14,14 @@ namespace Inventory_Management_System.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET api/Employee
-        public IQueryable<Customer> GetEmployee()
+        public IQueryable<Customer> GetCustomer()
         {
             return db.Customer;
         }
 
         // GET api/Employee/5
         [ResponseType(typeof(Customer))]
-        public IHttpActionResult GetEmployee(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             Customer customer = db.Customer.Find(id);
             if (customer == null)
