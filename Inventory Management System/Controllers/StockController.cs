@@ -30,8 +30,18 @@ namespace Inventory_Management_System.Controllers
         }
 
         // POST: api/Stock
-        public void Post([FromBody]string value)
+        [ResponseType(typeof(Stock))]
+        public IHttpActionResult PostStock(Stock stock)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Stock.Add(stock);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = stock.StockId }, stock);
         }
 
         // PUT: api/Stock/5
