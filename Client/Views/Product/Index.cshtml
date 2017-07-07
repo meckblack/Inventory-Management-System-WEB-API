@@ -1,0 +1,41 @@
+﻿@model Client.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var x = 1;
+}
+
+<h2>Index</h2>
+
+<a href="@Url.Action("Create", "Product")">Add</a>
+<br /><br />
+<table>
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.product.ProductName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in ViewBag.ProductList)
+        {
+            <tr>
+                <td>
+                    @(x++)
+                </td>
+                <td>
+                    @product.ProductName
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "Product", new { id = product.ProductId })">Delete</a>
+                    |
+                    <a href="@Url.Action("Edit", "Product", new { id = product.ProductId })">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

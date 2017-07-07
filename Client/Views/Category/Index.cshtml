@@ -31,9 +31,11 @@
                     @category.CategoryName
                 </td>
                 <td>
-                    <a href="@Url.Action("Delete", "Category", new { Id = category.CategoryId })">Delete</a>
+                    <a href="@Url.Action("Delete", "Category", new { id = category.CategoryId })">Delete</a>
                     |
-                    <a href="@Url.Action("Edit", "Category", new { Id = category.CategoryId })">Edit</a>
+                    <a href="@Url.Action("Edit", "Category", new { id = category.CategoryId })">Edit</a>
+                    |
+                    <a href="@Url.Action("Index", "Product", new { id = category.CategoryId})">Products</a>
                 </td>
             </tr>
         }

@@ -11,7 +11,5 @@ namespace Inventory_Management_System.Models
         [Required(ErrorMessage = "Name field required")]
         [Display(Name = "Name")]
         public string CategoryName { get; set; }
-
-        public virtual ICollection<Product> Product { get; set; }
     }
 }

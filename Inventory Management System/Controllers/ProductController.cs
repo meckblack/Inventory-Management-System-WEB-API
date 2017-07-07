@@ -13,6 +13,7 @@ using Inventory_Management_System.Models;
 
 namespace Inventory_Management_System.Controllers
 {
+    [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private IMS_DB db = new IMS_DB();
@@ -20,21 +21,29 @@ namespace Inventory_Management_System.Controllers
         // GET: api/Product
         public IQueryable<Product> GetProduct()
         {
-            return db.Product;
+            return db.Product.Include(p => p.ProductCategory);
         }
+
+        // GET: api/Product
+        //[Route("readbycategory/{id}")]
+        public IQueryable<Product> GetProduct(int id)
+        {
+            return db.Product.Where(p => p.CategoryId == id).Include(p => p.ProductCategory);
+        }
+
 
         // GET: api/Product/5
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(int id)
-        {
-            Product product = db.Product.Find(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Product))]
+        //public IHttpActionResult GetProduct(int id)
+        //{
+        //    Product product = db.Product.Find(id);
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(product);
-        }
+        //    return Ok(product);
+        //}
 
         // PUT: api/Product/5
         [ResponseType(typeof(void))]

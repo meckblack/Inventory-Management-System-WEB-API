@@ -1,0 +1,32 @@
+﻿@model Client.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+{
+    <table cellpadding="2" cellspacing="2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.product.ProductName)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.product.ProductName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </thead>
+    </table>
+}
+

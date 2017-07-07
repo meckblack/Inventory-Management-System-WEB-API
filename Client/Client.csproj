@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,6 +209,8 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\LocationClient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductClient.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +290,9 @@
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Location\Create.cshtml" />
     <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
