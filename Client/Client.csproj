@@ -206,6 +206,7 @@
     <Compile Include="Models\CategoryClient.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerClient.cs" />
+    <Compile Include="Models\FixedAsset.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\LocationClient.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\FixedAssetViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
