@@ -82,26 +82,12 @@ namespace Client.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Stock/Delete/5
+        // POST: Stock/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Stock/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            StockClient sc = new StockClient();
+            sc.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
