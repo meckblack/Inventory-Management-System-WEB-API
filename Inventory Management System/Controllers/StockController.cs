@@ -6,6 +6,8 @@ using System.Web.Http;
 using Inventory_Management_System.DAL;
 using Inventory_Management_System.Models;
 using System.Web.Http.Description;
+using System.Net;
+using System;
 
 namespace Inventory_Management_System.Controllers
 {
@@ -48,8 +50,38 @@ namespace Inventory_Management_System.Controllers
         }
 
         // PUT: api/Stock/5
-        public void Put(int id, [FromBody]string value)
+        [ResponseType(typeof(Stock))]
+        public IHttpActionResult PutStock(int id, Stock stock)
         {
+            if(!ModelState.IsValid)
+            {
+                BadRequest(ModelState);
+            }
+
+            db.Entry(stock).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if (!StockExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool StockExists(int id)
+        {
+            return db.Stock.Count(e => e.StockId == id) > 0;
         }
 
         // DELETE: api/Stock/5

@@ -1,9 +1,5 @@
 ﻿using Client.Models;
 using Client.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Client.Controllers
@@ -14,6 +10,7 @@ namespace Client.Controllers
         public ActionResult Index()
         {
             StockClient sc = new StockClient();
+
             ViewBag.StockList = sc.FindAll();
             return View();
         }
@@ -29,6 +26,12 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            StockClient sc = new StockClient();
+
+            ViewBag.CategoryId = new SelectList(sc.FindAll(), "CategoryId", "StockCategory");
+            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct");
+            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier");
+
             return View("Create");
         }
 
@@ -37,7 +40,13 @@ namespace Client.Controllers
         public ActionResult Create(StockViewModel svm)
         {
             StockClient sc = new StockClient();
+
+            ViewBag.CategoryId = new SelectList(sc.FindAll(), "StockId", "StockCategory", svm.stock.CategoryId);
+            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct", svm.stock.ProductId);
+            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier", svm.stock.SupplierId);
             sc.Create(svm.stock);
+
+
             return RedirectToAction("Index");
 
         }
