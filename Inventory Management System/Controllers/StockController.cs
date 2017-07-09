@@ -85,8 +85,19 @@ namespace Inventory_Management_System.Controllers
         }
 
         // DELETE: api/Stock/5
-        public void Delete(int id)
+        [ResponseType(typeof(Stock))]
+        public IHttpActionResult DeleteStock(int id)
         {
+            Stock stock = db.Stock.Find(id);
+            if (stock == null)
+            {
+                return NotFound();
+            }
+
+            db.Stock.Remove(stock);
+            db.SaveChanges();
+
+            return Ok(stock);
         }
     }
 }
