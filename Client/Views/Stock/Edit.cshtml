@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Stock", FormMethod.Post))
+{
+    <table cellpadding="2" cellspacing="2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.stock.CategoryId)
+                </th>
+                <td>
+                    @Html.DropDownList("CategoryId", null, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.stock.ProductId)
+                </th>
+                <td>
+                    @Html.DropDownList("ProductId", null, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.stock.SupplierId)
+                </th>
+                <td>
+                    @Html.DropDownList("SupplierId", null, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.stock.StockBuyingRate)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.stock.StockBuyingRate)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.stock.StockSellingRate)
+                </th>
+                <td>
+                    @Html.TextBoxFor(model => model.stock.StockSellingRate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </thead>
+    </table>
+}
