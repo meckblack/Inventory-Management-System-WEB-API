@@ -304,10 +304,10 @@
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\FixedAsset\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\FixedAsset\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
