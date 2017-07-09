@@ -53,25 +53,33 @@ namespace Client.Controllers
 
 
         // GET: Stock/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            StockClient sc = new StockClient();
+            StockViewModel svm = new StockViewModel();
+            svm.stock = sc.Find(id);
+
+            ViewBag.CategoryId = new SelectList(sc.FindAll(), "CategoryId", "StockCategory");
+            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct");
+            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier");
+
+            return View("Edit", svm);
         }
 
         // POST: Stock/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit()
         {
-            try
-            {
-                // TODO: Add update logic here
+            StockViewModel svm = new StockViewModel();
+            StockClient sc = new StockClient();
+            sc.Edit(svm.stock);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            ViewBag.CategoryId = new SelectList(sc.FindAll(), "StockId", "StockCategory", svm.stock.CategoryId);
+            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct", svm.stock.ProductId);
+            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier", svm.stock.SupplierId);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Stock/Delete/5

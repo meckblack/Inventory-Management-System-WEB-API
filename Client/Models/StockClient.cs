@@ -64,5 +64,23 @@ namespace Client.Models
                 return false;
             }
         }
+
+        public bool Edit(Stock stock)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.PutAsJsonAsync("stock/" + stock.StockIdd,
+                    stock).Result;
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
