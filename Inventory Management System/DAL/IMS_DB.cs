@@ -17,6 +17,7 @@ namespace Inventory_Management_System.DAL
         public DbSet<Product> Product { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Stock> Stock { get; set; }
+        public DbSet<FixedAsset> FixedAsset { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
