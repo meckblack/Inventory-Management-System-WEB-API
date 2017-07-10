@@ -15,7 +15,7 @@
                     @Html.LabelFor(model => model.stock.CategoryId)
                 </th>
                 <td>
-                    @Html.DropDownList("CategoryId", null, new { @class = "form-control" })
+                    @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.CategoryId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                     @Html.LabelFor(model => model.stock.ProductId)
                 </th>
                 <td>
-                    @Html.DropDownList("ProductId", null, new { @class = "form-control" })
+                    @Html.DropDownList("ProductId", (IEnumerable<SelectListItem>)ViewBag.ProductId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,7 @@
                     @Html.LabelFor(model => model.stock.SupplierId)
                 </th>
                 <td>
-                    @Html.DropDownList("SupplierId", null, new { @class = "form-control" })
+                    @Html.DropDownList("SupplierId", (IEnumerable<SelectListItem>)ViewBag.SupplierId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>

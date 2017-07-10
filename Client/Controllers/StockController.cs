@@ -6,11 +6,22 @@ namespace Client.Controllers
 {
     public class StockController : Controller
     {
+        StockClient sc;
+        CategoryClient cc;
+        ProductClient pc;
+        SupplierClient suc;
+
+        public StockController()
+        {
+            sc = new StockClient();
+            cc = new CategoryClient();
+            pc = new ProductClient();
+            suc = new SupplierClient();
+        }
+
         // GET: Stock
         public ActionResult Index()
         {
-            StockClient sc = new StockClient();
-
             ViewBag.StockList = sc.FindAll();
             return View();
         }
@@ -28,9 +39,9 @@ namespace Client.Controllers
         {
             StockClient sc = new StockClient();
 
-            ViewBag.CategoryId = new SelectList(sc.FindAll(), "CategoryId", "StockCategory");
-            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct");
-            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier");
+            ViewBag.CategoryId = new SelectList(cc.FindAll(), "CategoryId", "CategoryName");
+            ViewBag.ProductId = new SelectList(pc.FindAll(), "ProductId", "ProductName");
+            ViewBag.SupplierId = new SelectList(suc.FindAll(), "SupplierId", "SupplierName");
 
             return View("Create");
         }
@@ -41,9 +52,9 @@ namespace Client.Controllers
         {
             StockClient sc = new StockClient();
 
-            ViewBag.CategoryId = new SelectList(sc.FindAll(), "StockId", "StockCategory", svm.stock.CategoryId);
-            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct", svm.stock.ProductId);
-            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier", svm.stock.SupplierId);
+            ViewBag.CategoryId = new SelectList(cc.FindAll(), "CategoryId", "CategoryName", svm.stock.CategoryId);
+            ViewBag.ProductId = new SelectList(pc.FindAll(), "ProductId", "ProductName", svm.stock.ProductId);
+            ViewBag.SupplierId = new SelectList(suc.FindAll(), "SupplierId", "SupplierName", svm.stock.SupplierId);
             sc.Create(svm.stock);
 
 

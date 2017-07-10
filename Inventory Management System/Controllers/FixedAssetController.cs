@@ -18,14 +18,14 @@ namespace Inventory_Management_System.Controllers
         // GET: api/FixedAsset
         public IQueryable<FixedAsset> GetFixedAsset()
         {
-            return db.FixedAsset.Include(f => f.CategoryId).Include(f => f.LocationId);
+            return db.FixedAsset.Include(f => f.FixedAssetCategory).Include(f => f.FixedAssetLocation);
         }
 
         // GET: api/FixedAsset/5
         [ResponseType(typeof(FixedAsset))]
         public IHttpActionResult GetFixedAsset(int id)
         {
-            FixedAsset fixedAsset = new FixedAsset();
+            FixedAsset fixedAsset = db.FixedAsset.Find(id);
             if(fixedAsset == null)
             {
                 return NotFound();
