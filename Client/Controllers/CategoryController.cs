@@ -6,6 +6,16 @@ namespace Client.Controllers
 {
     public class CategoryController : Controller
     {
+        CategoryClient cc;
+        CategoryViewModel cvm;
+
+        public CategoryController()
+        {
+            cc = new CategoryClient();
+
+              
+        }
+
         // GET: Category
         public ActionResult Index()
         {

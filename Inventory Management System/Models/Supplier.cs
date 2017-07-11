@@ -15,12 +15,12 @@ namespace Inventory_Management_System.Models
         public string SupplierName { get; set; }
 
         [Required(ErrorMessage ="Contact field is required")]
-        [Display(Name = "Address")]
+        [Display(Name = "Phone Number")]
         [DataType(DataType.MultilineText)]
         public string SupplierContact { get; set; }
 
         [Required(ErrorMessage ="Address field is required")]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Address")]
         public string SupplierAddress { get; set; }
     }
 }
