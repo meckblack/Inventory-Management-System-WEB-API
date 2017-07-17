@@ -54,7 +54,7 @@ namespace Inventory_Management_System.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ProductId)
+            if (id != product.Id)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace Inventory_Management_System.Controllers
             db.Product.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
+            return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
 
         // DELETE: api/Product/5
@@ -122,7 +122,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool ProductExists(int id)
         {
-            return db.Product.Count(e => e.ProductId == id) > 0;
+            return db.Product.Count(e => e.Id == id) > 0;
         }
     }
 }

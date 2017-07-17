@@ -6,7 +6,7 @@ namespace Inventory_Management_System.Models
     public partial class Category
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Name field required")]
         [Display(Name = "Name")]

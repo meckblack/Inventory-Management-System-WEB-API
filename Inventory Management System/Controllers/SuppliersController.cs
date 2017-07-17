@@ -44,7 +44,7 @@ namespace Inventory_Management_System.Controllers
             db.Suppliers.Add(supplier);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = supplier.SupplierId }, supplier);
+            return CreatedAtRoute("DefaultApi", new { id = supplier.Id }, supplier);
         }
 
         // PUT: api/Suppliers/5
@@ -56,7 +56,7 @@ namespace Inventory_Management_System.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != supplier.SupplierId)
+            if (id != supplier.Id)
             {
                 return BadRequest();
             }
@@ -84,7 +84,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool SupplierExists(int id)
         {
-            return db.Suppliers.Count(e => e.SupplierId == id) > 0;
+            return db.Suppliers.Count(e => e.Id == id) > 0;
         }
 
         // DELETE: api/Suppliers/5

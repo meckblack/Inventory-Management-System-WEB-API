@@ -5,7 +5,7 @@ namespace Client.Models
     public class Product
     {
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage="Name field required")]
         [Display(Name="Name")]

@@ -1,11 +1,16 @@
 ﻿using Client.Models;
 using Client.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Client.Controllers
 {
     public class StockController : Controller
     {
+
         StockClient sc;
         CategoryClient cc;
         ProductClient pc;
@@ -27,78 +32,77 @@ namespace Client.Controllers
         }
 
         // GET: Stock/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
+        public ActionResult Details(int id)
+        {
+            ViewBag.StockDetails = cc.Find(id);
+            return View("Details");
+        }
 
         // GET: Stock/Create
-        [HttpGet]
         public ActionResult Create()
         {
-            StockClient sc = new StockClient();
-
-            ViewBag.CategoryId = new SelectList(cc.FindAll(), "CategoryId", "CategoryName");
-            ViewBag.ProductId = new SelectList(pc.FindAll(), "ProductId", "ProductName");
-            ViewBag.SupplierId = new SelectList(suc.FindAll(), "SupplierId", "SupplierName");
-
-            return View("Create");
+            var svm = new StockViewModel();
+            ViewBag.CategoryId = new SelectList(cc.FindAll(), "Id", "CategoryName");
+            ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName");
+            ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName");
+            return View("Create", svm);
         }
 
         // POST: Stock/Create
         [HttpPost]
         public ActionResult Create(StockViewModel svm)
         {
-            StockClient sc = new StockClient();
-
-            ViewBag.CategoryId = new SelectList(cc.FindAll(), "CategoryId", "CategoryName", svm.stock.CategoryId);
-            ViewBag.ProductId = new SelectList(pc.FindAll(), "ProductId", "ProductName", svm.stock.ProductId);
-            ViewBag.SupplierId = new SelectList(suc.FindAll(), "SupplierId", "SupplierName", svm.stock.SupplierId);
+            
+            ViewBag.CategoryId = new SelectList(cc.FindAll(), "Id", "CategoryName", svm.stock.CategoryId);
+            ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName", svm.stock.ProductId);
+            ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName", svm.stock.SupplierId);
+                 
             sc.Create(svm.stock);
-
-
             return RedirectToAction("Index");
-
         }
 
-
         // GET: Stock/Edit/5
-        [HttpGet]
         public ActionResult Edit(int id)
         {
-            StockClient sc = new StockClient();
-            StockViewModel svm = new StockViewModel();
-            svm.stock = sc.Find(id);
-
-            ViewBag.CategoryId = new SelectList(sc.FindAll(), "CategoryId", "StockCategory");
-            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct");
-            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier");
-
-            return View("Edit", svm);
+            return View();
         }
 
         // POST: Stock/Edit/5
         [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            StockViewModel svm = new StockViewModel();
-            StockClient sc = new StockClient();
-            sc.Edit(svm.stock);
+            try
+            {
+                // TODO: Add update logic here
 
-            ViewBag.CategoryId = new SelectList(sc.FindAll(), "StockId", "StockCategory", svm.stock.CategoryId);
-            ViewBag.ProductId = new SelectList(sc.FindAll(), "ProductId", "StockProduct", svm.stock.ProductId);
-            ViewBag.SupplierId = new SelectList(sc.FindAll(), "SupplierId", "StockSupplier", svm.stock.SupplierId);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
-            return RedirectToAction("Index");
+        // GET: Stock/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
         }
 
         // POST: Stock/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            StockClient sc = new StockClient();
-            sc.Delete(id);
-            return RedirectToAction("Index");
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

@@ -7,7 +7,6 @@ namespace Client.Controllers
     public class CategoryController : Controller
     {
         CategoryClient cc;
-        CategoryViewModel cvm;
 
         public CategoryController()
         {

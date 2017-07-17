@@ -1,7 +1,6 @@
-﻿using Inventory_Management_System.DAL;
-using Inventory_Management_System.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -9,13 +8,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Inventory_Management_System.DAL;
+using Inventory_Management_System.Models;
 
 namespace Inventory_Management_System.Controllers
 {
     public class LocationController : ApiController
     {
-
         private IMS_DB db = new IMS_DB();
+
+        Location location;
+
+        private LocationController()
+        {
+            location = new Location();
+        }
 
         // GET: api/Location
         public IQueryable<Location> GetLocation()
@@ -28,7 +35,7 @@ namespace Inventory_Management_System.Controllers
         public IHttpActionResult GetLocation(int id)
         {
             Location location = db.Location.Find(id);
-            if(location == null)
+            if (location == null)
             {
                 return NotFound();
             }
@@ -36,30 +43,16 @@ namespace Inventory_Management_System.Controllers
             return Ok(location);
         }
 
-        // POST: api/Location
-        [ResponseType(typeof(Location))]
-        public IHttpActionResult PostLocation(Location location)
-        {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Location.Add(location);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = location.LocationId }, location);
-        }
-
         // PUT: api/Location/5
-        [ResponseType(typeof(Location))]
-        public IHttpActionResult PutLocation(int id, Location location)
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutLocation(int id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (id != location.LocationId)
+
+            if (id != location.Id)
             {
                 return BadRequest();
             }
@@ -70,9 +63,9 @@ namespace Inventory_Management_System.Controllers
             {
                 db.SaveChanges();
             }
-            catch(DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException)
             {
-                if(!LocationExists(id))
+                if (!LocationExists(id))
                 {
                     return NotFound();
                 }
@@ -85,17 +78,27 @@ namespace Inventory_Management_System.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        private bool LocationExists(int id)
+        // POST: api/Location
+        [ResponseType(typeof(Location))]
+        public IHttpActionResult PostLocation(Location location)
         {
-            return db.Location.Count(c => c.LocationId == id) > 0;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Location.Add(location);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = location.Id }, location);
         }
 
         // DELETE: api/Location/5
         [ResponseType(typeof(Location))]
-        public IHttpActionResult DeleteLocation(int id, Location location)
+        public IHttpActionResult DeleteLocation(int id)
         {
-            location = db.Location.Find(id);
-            if(location == null)
+            Location location = db.Location.Find(id);
+            if (location == null)
             {
                 return NotFound();
             }
@@ -104,6 +107,20 @@ namespace Inventory_Management_System.Controllers
             db.SaveChanges();
 
             return Ok(location);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool LocationExists(int id)
+        {
+            return db.Location.Count(e => e.Id == id) > 0;
         }
     }
 }

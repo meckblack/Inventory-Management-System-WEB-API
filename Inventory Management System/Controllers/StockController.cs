@@ -1,13 +1,15 @@
-﻿using System.Linq;
-using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Inventory_Management_System.DAL;
 using Inventory_Management_System.Models;
-using System.Web.Http.Description;
-using System.Net;
-using System;
 
 namespace Inventory_Management_System.Controllers
 {
@@ -31,32 +33,23 @@ namespace Inventory_Management_System.Controllers
                 return NotFound();
             }
 
-            return Ok();
+            return Ok(stock);
         }
 
-        // POST: api/Stock
-        [ResponseType(typeof(Stock))]
-        public IHttpActionResult PostStock(Stock stock)
+        // PUT: api/Stock/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutStock(int id, Stock stock)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Stock.Add(stock);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = stock.StockId }, stock);
-        }
-
-        // PUT: api/Stock/5
-        [ResponseType(typeof(Stock))]
-        public IHttpActionResult PutStock(int id, Stock stock)
-        {
-            if(!ModelState.IsValid)
+            if (id != stock.Id)
             {
-                BadRequest(ModelState);
+                return BadRequest();
             }
+
 
             db.Entry(stock).State = EntityState.Modified;
 
@@ -64,7 +57,7 @@ namespace Inventory_Management_System.Controllers
             {
                 db.SaveChanges();
             }
-            catch(DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException)
             {
                 if (!StockExists(id))
                 {
@@ -79,9 +72,25 @@ namespace Inventory_Management_System.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        private bool StockExists(int id)
+        // POST: api/Stock
+        [ResponseType(typeof(Stock))]
+        public IHttpActionResult PostStock(Stock stock)
         {
-            return db.Stock.Count(e => e.StockId == id) > 0;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            
+
+            System.Diagnostics.Debug.WriteLine("Category ID is " + stock.CategoryId);
+            System.Diagnostics.Debug.WriteLine("Product ID is " + stock.ProductId);
+            System.Diagnostics.Debug.WriteLine("Supplier ID is " + stock.SupplierId);
+
+            db.Stock.Add(stock);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = stock.Id }, stock);
         }
 
         // DELETE: api/Stock/5
@@ -107,6 +116,11 @@ namespace Inventory_Management_System.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private bool StockExists(int id)
+        {
+            return db.Stock.Count(e => e.Id == id) > 0;
         }
     }
 }

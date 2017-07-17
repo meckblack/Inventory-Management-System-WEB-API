@@ -9,7 +9,7 @@ namespace Inventory_Management_System.Models
     public partial class Customer
     {
         [Key]
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Name field required")]
         [Display(Name = "Name")]

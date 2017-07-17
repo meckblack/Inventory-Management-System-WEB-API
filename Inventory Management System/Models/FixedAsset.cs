@@ -9,7 +9,7 @@ namespace Inventory_Management_System.Models
     public class FixedAsset
     {
         [Key]
-        public int FixedAssetId { get; set; }
+        public int Id { get; set; }
 
         public string FixedAssetName { get; set; }
 

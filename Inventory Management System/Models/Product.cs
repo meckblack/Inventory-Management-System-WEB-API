@@ -5,7 +5,7 @@ namespace Inventory_Management_System.Models
     public partial class Product
     {
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         public string ProductName { get; set; }
 

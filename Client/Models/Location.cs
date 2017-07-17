@@ -5,7 +5,7 @@ namespace Client.Models
     public class Location
     {
         [Key]
-        public int LocationId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage="Name field required")]
         [Display(Name ="Name")]

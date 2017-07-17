@@ -9,7 +9,7 @@ namespace Client.Models
     public class FixedAsset
     {
         [Key]
-        public int FixedAssetId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage ="Asset Name field required")]
         [Display(Name = "Asset Name")]

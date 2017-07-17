@@ -13,6 +13,13 @@ namespace Inventory_Management_System.Controllers
     {
         private IMS_DB db = new IMS_DB();
 
+        Customer customer;
+
+        private CustomerController()
+        {
+            customer = new Customer();
+        }
+
         // GET api/Employee
         public IQueryable<Customer> GetCustomer()
         {
@@ -44,18 +51,19 @@ namespace Inventory_Management_System.Controllers
             db.Customer.Add(customer);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
         }
 
         //PUT: api/Customer/5
         [ResponseType(typeof(Customer))]
-        public IHttpActionResult PutCustomer (int id, Customer customer)
+        public IHttpActionResult PutCustomer (int id)
         {
             if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if(id != customer.CustomerId)
+
+            if (id != customer.Id)
             {
                 return BadRequest();
             }
@@ -83,7 +91,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool CustomerExists(int id)
         {
-            return db.Customer.Count(c => c.CustomerId == id) > 0;
+            return db.Customer.Count(c => c.Id == id) > 0;
         }
 
         //DELETE: api/Customer/5

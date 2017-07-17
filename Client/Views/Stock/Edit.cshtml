@@ -1,4 +1,4 @@
-﻿
+﻿@model Client.ViewModels.StockViewModel
 @{
     ViewBag.Title = "Edit";
 }
@@ -7,30 +7,31 @@
 
 @using (Html.BeginForm("Edit", "Stock", FormMethod.Post))
 {
+    @Html.HiddenFor(model => model.stock.StockId)
     <table cellpadding="2" cellspacing="2">
         <thead>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.stock.CategoryId)
+                   Category
                 </th>
                 <td>
-                    @Html.DropDownList("CategoryId", null, new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.stock.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.stock.ProductId)
+                    Product
                 </th>
                 <td>
-                    @Html.DropDownList("ProductId", null, new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.stock.ProductId, (IEnumerable<SelectListItem>)ViewBag.ProductId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.stock.SupplierId)
+                    Supplier
                 </th>
                 <td>
-                    @Html.DropDownList("SupplierId", null, new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.stock.SupplierId, (IEnumerable<SelectListItem>)ViewBag.SupplierId, string.Empty, new { @class = "form-control" })
                 </td>
             </tr>
             <tr>

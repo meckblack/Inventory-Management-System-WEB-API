@@ -14,6 +14,7 @@ namespace Client.Controllers
             return View();
         }
 
+        // GET: Stock/Details/5
         public ActionResult Details(int Id)
         {
             CustomerClient cc = new CustomerClient();
@@ -21,12 +22,14 @@ namespace Client.Controllers
             return View("Details");
         }
 
+        // GET: Stock/Create
         [HttpGet]
         public ActionResult Create()
         {
             return View("Create");
         }
 
+        // POST: Stock/Create
         [HttpPost]
         public ActionResult Create(CustomerViewModel cvm)
         {
@@ -36,6 +39,7 @@ namespace Client.Controllers
 
         }
 
+        // GET: Stock/Delete/5
         public ActionResult Delete(int id)
         {
             CustomerClient cc = new CustomerClient();
@@ -43,6 +47,7 @@ namespace Client.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Stock/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -52,6 +57,7 @@ namespace Client.Controllers
             return View("Edit", cvm);
         }
 
+        // POST: Stock/Edit/5
         [HttpPost]
         public ActionResult Edit()
         {

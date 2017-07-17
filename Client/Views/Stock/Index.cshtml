@@ -18,7 +18,7 @@
                 S/N
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.stock.CategoryId)
+                @Html.DisplayNameFor(model => model.stock.StockCategory)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.stock.ProductId)
@@ -45,13 +45,13 @@
                     @(x++)
                 </td>
                 <td>
-                    @stock.StockCategory
+                    @stock.StockCategory.CategoryName
                 </td>
                 <td>
-                    @stock.StockProduct
+                    @stock.StockProduct.ProductName
                 </td>
                 <td>
-                    @stock.StockSupplier
+                    @stock.StockSupplier.SupplierName
                 </td>
                 <td>
                     @stock.StockBuyingRate
@@ -60,9 +60,9 @@
                     @stock.StockSellingRate
                 </td>
                 <td>
-                    <a href="@Url.Action("Delete", "Stock", new { id = stock.StockId })">Delete</a>
+                    <a href="@Url.Action("Delete", "Stock", new { id = stock.Id })">Delete</a>
                     |
-                    <a href="@Url.Action("Edit", "Stock", new { id = stock.StockId })">Edit</a>
+                    <a href="@Url.Action("Edit", "Stock", new { id = stock.Id })">Edit</a>
                 </td>
             </tr>
         }

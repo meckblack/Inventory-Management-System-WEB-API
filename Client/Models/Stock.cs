@@ -5,7 +5,7 @@ namespace Client.Models
     public class Stock
     {
         [Key]
-        public int StockId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name ="Buying Rate")]
         [Required(ErrorMessage ="Buying Rate field required")]

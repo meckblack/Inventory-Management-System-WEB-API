@@ -9,7 +9,7 @@ namespace Inventory_Management_System.Models
     public partial class Supplier
     {
         [Key]
-        public int SupplierId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage ="Name field is required")]
         public string SupplierName { get; set; }

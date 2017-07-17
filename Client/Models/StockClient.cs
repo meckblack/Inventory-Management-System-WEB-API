@@ -64,7 +64,7 @@ namespace Client.Models
                 return false;
             }
         }
-        
+
         public bool Delete(int id)
         {
             try
@@ -91,7 +91,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PutAsJsonAsync("stock/" + stock.StockId,
+                HttpResponseMessage response = client.PutAsJsonAsync("stock/" + stock.Id,
                     stock).Result;
                 return response.IsSuccessStatusCode;
             }
@@ -100,5 +100,6 @@ namespace Client.Models
                 return false;
             }
         }
+
     }
 }

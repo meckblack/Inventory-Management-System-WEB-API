@@ -46,7 +46,7 @@ namespace Inventory_Management_System.Controllers
             db.Category.Add(category);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = category.CategoryId }, category);
+            return CreatedAtRoute("DefaultApi", new { id = category.Id }, category);
         }
 
         //PUT: api/CaTEGORY/5
@@ -57,7 +57,7 @@ namespace Inventory_Management_System.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if(id != category.CategoryId)
+            if(id != category.Id)
             {
                 return BadRequest();
             }
@@ -84,7 +84,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool CategoryExists(int id)
         {
-            return db.Category.Count(c => c.CategoryId == id) > 0;
+            return db.Category.Count(c => c.Id == id) > 0;
         }
 
 
