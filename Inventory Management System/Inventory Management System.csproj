@@ -171,6 +171,10 @@
     <Compile Include="Migrations\201707191111342_MigrationThree.Designer.cs">
       <DependentUpon>201707191111342_MigrationThree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707191129303_MigrationFour.cs" />
+    <Compile Include="Migrations\201707191129303_MigrationFour.Designer.cs">
+      <DependentUpon>201707191129303_MigrationFour.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -239,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707191111342_MigrationThree.resx">
       <DependentUpon>201707191111342_MigrationThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707191129303_MigrationFour.resx">
+      <DependentUpon>201707191129303_MigrationFour.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
