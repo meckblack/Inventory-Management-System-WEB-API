@@ -16,7 +16,7 @@ namespace Inventory_Management_System.Models
 
         public decimal ProductPrice { get; set; }
 
-        public string Description { get; set; }
+        public string ProductDescription { get; set; }
 
         public DateTime ProductDate { get; set; }
 

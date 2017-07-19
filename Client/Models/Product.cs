@@ -23,7 +23,7 @@ namespace Client.Models
         [Required(ErrorMessage = "Description field required")]
         [Display(Name = "Description")]
         [DataType(DataType.MultilineText)]
-        public string Description { get; set; }
+        public string ProductDescription { get; set; }
 
         [Required(ErrorMessage = "Date field required")]
         [Display(Name = "Date")]
