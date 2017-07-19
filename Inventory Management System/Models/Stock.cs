@@ -8,10 +8,6 @@ namespace Inventory_Management_System.Models
         [Key]
         public int Id { get; set; }
 
-        public decimal StockBuyingRate { get; set; }
-
-        public decimal StockSellingRate { get; set; }
-
         [ForeignKey("StockProduct")]
         public int ProductId { get; set; }
 
@@ -26,6 +22,8 @@ namespace Inventory_Management_System.Models
         public int CategoryId { get; set; }
 
         public virtual Category StockCategory { get; set; }
+
+        public int StockQuantity { get; set; }
 
     }
 }

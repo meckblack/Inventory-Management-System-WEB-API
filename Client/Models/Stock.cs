@@ -7,13 +7,9 @@ namespace Client.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name ="Buying Rate")]
-        [Required(ErrorMessage ="Buying Rate field required")]
-        public decimal StockBuyingRate { get; set; }
-
-        [Display(Name = "Selling Rate")]
-        [Required(ErrorMessage = "Selling Rate field required")]
-        public decimal StockSellingRate { get; set; }
+        [Display(Name = "Quantity")]
+        [Required(ErrorMessage = "Quantity field required")]
+        public int StockQuantity { get; set; }
 
         [Display(Name = "Product Name")]
         [Required(ErrorMessage = "Product name field required")]
