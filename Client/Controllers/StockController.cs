@@ -56,7 +56,11 @@ namespace Client.Controllers
             ViewBag.CategoryId = new SelectList(cc.FindAll(), "Id", "CategoryName", svm.stock.CategoryId);
             ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName", svm.stock.ProductId);
             ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName", svm.stock.SupplierId);
-                 
+
+            System.Diagnostics.Debug.WriteLine("Category C ID is " + svm.stock.CategoryId);
+            System.Diagnostics.Debug.WriteLine("Product C ID is " + svm.stock.ProductId);
+            System.Diagnostics.Debug.WriteLine("Supplier C ID is " + svm.stock.SupplierId);
+
             sc.Create(svm.stock);
             return RedirectToAction("Index");
         }
