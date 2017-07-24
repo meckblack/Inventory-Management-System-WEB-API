@@ -6,20 +6,17 @@ namespace Inventory_Management_System.Models
     public partial class Product
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
-        public string ProductName { get; set; }
+        public string Name { get; set; }
 
         public int CategoryId { get; set; }
 
         public virtual Category ProductCategory { get; set; }
+        
+        public string Description { get; set; }
 
-        public decimal ProductPrice { get; set; }
-
-        public string ProductDescription { get; set; }
-
-        public DateTime ProductDate { get; set; }
-
-        public string ProductModel { get; set; }
+        public DateTime Date { get; set; }
+        
     }
 }
