@@ -5,18 +5,18 @@ namespace Client.Models
     public class Supplier
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required(ErrorMessage = "Name field is required")]
-        public string SupplierName { get; set; }
-
-        [Required(ErrorMessage = "Contact field is required")]
-        [Display(Name = "Phone Number")]
-        [DataType(DataType.MultilineText)]
-        public string SupplierContact { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Address field is required")]
         [Display(Name = "Address")]
-        public string SupplierAddress { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "Contact field is required")]
+        [Display(Name = "Phone Number")]
+        public string Contact { get; set; }
     }
 }

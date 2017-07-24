@@ -17,13 +17,13 @@
                 ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.supplier.SupplierName)
+                @Html.DisplayNameFor(model => model.supplier.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.supplier.SupplierContact)
+                @Html.DisplayNameFor(model => model.supplier.Contact)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.supplier.SupplierAddress)
+                @Html.DisplayNameFor(model => model.supplier.Address)
             </th>
         </tr>
     </thead>
@@ -44,9 +44,9 @@
                     @supplier.SupplierAddress
                 </td>
                 <td>
-                    <a  href="@Url.Action("Delete", "Suppliers", new { id = supplier.SupplierId })" >Delete</a> 
+                    <a  href="@Url.Action("Delete", "Suppliers", new { id = supplier.ID })" >Delete</a> 
                     | 
-                    <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.SupplierId })" >Edit</a> 
+                    <a href="@Url.Action("Edit", "Suppliers", new { id = supplier.ID })" >Edit</a> 
                 </td>
             </tr>
         }

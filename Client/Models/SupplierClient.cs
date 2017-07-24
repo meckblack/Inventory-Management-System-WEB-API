@@ -91,7 +91,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PutAsJsonAsync("suppliers/" + supplier.Id,
+                HttpResponseMessage response = client.PutAsJsonAsync("suppliers/" + supplier.ID,
                     supplier).Result;
                 return response.IsSuccessStatusCode;
             }
