@@ -2,14 +2,14 @@
 
 namespace Client.Models
 {
-    public class Stock
+    public class Store
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Quantity")]
         [Required(ErrorMessage = "Quantity field required")]
-        public int StockQuantity { get; set; }
+        public int AvailableQuantity { get; set; }
 
         [Display(Name = "Product Name")]
         [Required(ErrorMessage = "Product name field required")]
@@ -22,11 +22,6 @@ namespace Client.Models
         public int SupplierId { get; set; }
 
         public virtual Supplier StockSupplier { get; set; }
-
-        [Display(Name = "Category")]
-        [Required(ErrorMessage = "Category field required")]
-        public int CategoryId { get; set; }
-
-        public virtual Category StockCategory { get; set; }
+        
     }
 }

@@ -195,7 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,8 +209,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductClient.cs" />
-    <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\StockClient.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\StoreClient.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,7 +218,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
-    <Compile Include="ViewModels\StockViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

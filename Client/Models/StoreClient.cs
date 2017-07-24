@@ -5,11 +5,11 @@ using System.Net.Http.Headers;
 
 namespace Client.Models
 {
-    public class StockClient
+    public class StoreClient
     {
         private string BASE_URL = "http://localhost:64448/api/";
 
-        public IEnumerable<Stock> FindAll()
+        public IEnumerable<Store> FindAll()
         {
             try
             {
@@ -17,9 +17,9 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("stock").Result;
+                HttpResponseMessage response = client.GetAsync("store").Result;
                 if (response.IsSuccessStatusCode)
-                    return response.Content.ReadAsAsync<IEnumerable<Stock>>().Result;
+                    return response.Content.ReadAsAsync<IEnumerable<Store>>().Result;
                 return null;
             }
             catch
@@ -28,7 +28,7 @@ namespace Client.Models
             }
         }
 
-        public Stock Find(int id)
+        public Store Find(int id)
         {
             try
             {
@@ -36,9 +36,9 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("stock/" + id).Result;
+                HttpResponseMessage response = client.GetAsync("store/" + id).Result;
                 if (response.IsSuccessStatusCode)
-                    return response.Content.ReadAsAsync<Stock>().Result;
+                    return response.Content.ReadAsAsync<Store>().Result;
                 return null;
             }
             catch
@@ -47,7 +47,7 @@ namespace Client.Models
             }
         }
 
-        public bool Create(Stock stock)
+        public bool Create(Store store)
         {
             try
             {
@@ -55,8 +55,8 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PostAsJsonAsync("stock",
-                    stock).Result;
+                HttpResponseMessage response = client.PostAsJsonAsync("store",
+                    store).Result;
                 return response.IsSuccessStatusCode;
             }
             catch
@@ -73,7 +73,7 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.DeleteAsync("stock/" +
+                HttpResponseMessage response = client.DeleteAsync("store/" +
                     id).Result;
                 return response.IsSuccessStatusCode;
             }
@@ -83,7 +83,7 @@ namespace Client.Models
             }
         }
 
-        public bool Edit(Stock stock)
+        public bool Edit(Store store)
         {
             try
             {
@@ -91,8 +91,8 @@ namespace Client.Models
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PutAsJsonAsync("stock/" + stock.Id,
-                    stock).Result;
+                HttpResponseMessage response = client.PutAsJsonAsync("store/" + store.ID,
+                    store).Result;
                 return response.IsSuccessStatusCode;
             }
             catch

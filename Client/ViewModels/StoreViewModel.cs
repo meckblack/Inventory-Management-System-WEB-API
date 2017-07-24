@@ -2,9 +2,9 @@
 
 namespace Client.ViewModels
 {
-    public class StockViewModel
+    public class StoreViewModel
     {
-        public Stock stock
+        public Store store
         {
             get;
             set;

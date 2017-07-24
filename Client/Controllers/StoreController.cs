@@ -8,70 +8,65 @@ using System.Web.Mvc;
 
 namespace Client.Controllers
 {
-    public class StockController : Controller
+    public class StoreController : Controller
     {
 
-        StockClient sc;
-        CategoryClient cc;
+        StoreClient sc;
         ProductClient pc;
         SupplierClient suc;
 
-        public StockController()
+        public StoreController()
         {
-            sc = new StockClient();
-            cc = new CategoryClient();
+            sc = new StoreClient();
             pc = new ProductClient();
             suc = new SupplierClient();
         }
 
-        // GET: Stock
+        // GET: Store
         public ActionResult Index()
         {
-            ViewBag.StockList = sc.FindAll();
+            ViewBag.StoreList = sc.FindAll();
             return View();
         }
 
-        // GET: Stock/Details/5
-        public ActionResult Details(int id)
-        {
-            ViewBag.StockDetails = cc.Find(id);
-            return View("Details");
-        }
+        // GET: Store/Details/5
+        //public ActionResult Details(int id)
+        //{
+        //    ViewBag.StoreDetails = cc.Find(id);
+        //    return View("Details");
+        //}
 
-        // GET: Stock/Create
+        // GET: Store/Create
         public ActionResult Create()
         {
-            var svm = new StockViewModel();
-            ViewBag.CategoryId = new SelectList(cc.FindAll(), "Id", "CategoryName");
+            var svm = new StoreViewModel();
             ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName");
             ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName");
             return View("Create", svm);
         }
 
-        // POST: Stock/Create
+        // POST: Store/Create
         [HttpPost]
-        public ActionResult Create(StockViewModel svm)
+        public ActionResult Create(StoreViewModel svm)
         {
             
-            ViewBag.CategoryId = new SelectList(cc.FindAll(), "Id", "CategoryName", svm.stock.CategoryId);
-            ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName", svm.stock.ProductId);
-            ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName", svm.stock.SupplierId);
+            ViewBag.ProductId = new SelectList(pc.FindAll(), "Id", "ProductName", svm.store.ProductId);
+            ViewBag.SupplierId = new SelectList(suc.FindAll(), "Id", "SupplierName", svm.store.SupplierId);
 
-            System.Diagnostics.Debug.WriteLine("Category C ID is " + svm.stock.CategoryId);
-            System.Diagnostics.Debug.WriteLine("Product C ID is " + svm.stock.ProductId);
-            System.Diagnostics.Debug.WriteLine("Supplier C ID is " + svm.stock.SupplierId);
+            System.Diagnostics.Debug.WriteLine("Product C ID is " + svm.store.ProductId);
+            System.Diagnostics.Debug.WriteLine("Supplier C ID is " + svm.store.SupplierId);
 
-            sc.Create(svm.stock);
+            sc.Create(svm.store);
             return RedirectToAction("Index");
         }
 
-        // GET: Stock/Edit/5
+        // GET: Store/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Stock/Edit/5
+        // POST: Store/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -87,13 +82,13 @@ namespace Client.Controllers
             }
         }
 
-        // GET: Stock/Delete/5
+        // GET: Store/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Stock/Delete/5
+        // POST: Store/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
