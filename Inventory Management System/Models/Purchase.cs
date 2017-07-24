@@ -6,7 +6,7 @@ namespace Inventory_Management_System.Models
     public class Purchase
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public Product ProductId  { get; set; }
 

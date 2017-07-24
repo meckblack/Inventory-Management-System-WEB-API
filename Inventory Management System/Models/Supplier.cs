@@ -5,7 +5,7 @@ namespace Inventory_Management_System.Models
     public partial class Supplier
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

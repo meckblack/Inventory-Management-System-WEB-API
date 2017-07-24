@@ -6,7 +6,7 @@ namespace Inventory_Management_System.Models
     public partial class Store
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("StoreProduct")]
         public int ProductId { get; set; }

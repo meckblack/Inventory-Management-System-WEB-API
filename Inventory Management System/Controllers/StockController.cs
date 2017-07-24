@@ -45,7 +45,7 @@ namespace Inventory_Management_System.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != stock.ID)
+            if (id != stock.Id)
             {
                 return BadRequest();
             }
@@ -89,7 +89,7 @@ namespace Inventory_Management_System.Controllers
             db.Store.Add(stock);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stock.ID }, stock);
+            return CreatedAtRoute("DefaultApi", new { id = stock.Id }, stock);
         }
 
         // DELETE: api/Stock/5
@@ -119,7 +119,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool StockExists(int id)
         {
-            return db.Store.Count(e => e.ID == id) > 0;
+            return db.Store.Count(e => e.Id == id) > 0;
         }
     }
 }
