@@ -16,7 +16,7 @@ namespace Inventory_Management_System.DAL
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
        // public DbSet<Location> Location { get; set; }
-        public DbSet<Stock> Stock { get; set; }
+        public DbSet<Store> Store { get; set; }
        // public DbSet<Asset> Asset { get; set; }
 
 

@@ -110,7 +110,7 @@ namespace Client.Models
                     client.BaseAddress = new Uri(BASE_URL);
                     client.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage response = client.PutAsJsonAsync("product/" + product.Id,
+                    HttpResponseMessage response = client.PutAsJsonAsync("product/" + product.ID,
                         product).Result;
                     return response.IsSuccessStatusCode;
                 }

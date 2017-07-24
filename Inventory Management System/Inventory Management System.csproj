@@ -182,11 +182,15 @@
     <Compile Include="Migrations\201707242229094_MigrationSix.Designer.cs">
       <DependentUpon>201707242229094_MigrationSix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707242244041_MigrationSeven.cs" />
+    <Compile Include="Migrations\201707242244041_MigrationSeven.Designer.cs">
+      <DependentUpon>201707242244041_MigrationSeven.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -258,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707242229094_MigrationSix.resx">
       <DependentUpon>201707242229094_MigrationSix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707242244041_MigrationSeven.resx">
+      <DependentUpon>201707242244041_MigrationSeven.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

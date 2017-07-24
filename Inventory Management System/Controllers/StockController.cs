@@ -18,16 +18,16 @@ namespace Inventory_Management_System.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: api/Stock
-        public IQueryable<Stock> GetStock()
+        public IQueryable<Store> GetStock()
         {
-            return db.Stock.Include(s => s.StockCategory).Include(s => s.StockProduct).Include(s => s.StockSupplier);
+            return db.Store.Include(s => s.StoreProduct).Include(s => s.StoreSupplier);
         }
 
         // GET: api/Stock/5
-        [ResponseType(typeof(Stock))]
+        [ResponseType(typeof(Store))]
         public IHttpActionResult GetStock(int id)
         {
-            Stock stock = db.Stock.Find(id);
+            Store stock = db.Store.Find(id);
             if (stock == null)
             {
                 return NotFound();
@@ -38,14 +38,14 @@ namespace Inventory_Management_System.Controllers
 
         // PUT: api/Stock/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutStock(int id, Stock stock)
+        public IHttpActionResult PutStock(int id, Store stock)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != stock.Id)
+            if (id != stock.ID)
             {
                 return BadRequest();
             }
@@ -73,8 +73,8 @@ namespace Inventory_Management_System.Controllers
         }
 
         // POST: api/Stock
-        [ResponseType(typeof(Stock))]
-        public IHttpActionResult PostStock(Stock stock)
+        [ResponseType(typeof(Store))]
+        public IHttpActionResult PostStock(Store stock)
         {
             if (!ModelState.IsValid)
             {
@@ -82,28 +82,27 @@ namespace Inventory_Management_System.Controllers
             }
 
             
-
-            System.Diagnostics.Debug.WriteLine("Category ID is " + stock.CategoryId);
+            
             System.Diagnostics.Debug.WriteLine("Product ID is " + stock.ProductId);
             System.Diagnostics.Debug.WriteLine("Supplier ID is " + stock.SupplierId);
 
-            db.Stock.Add(stock);
+            db.Store.Add(stock);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stock.Id }, stock);
+            return CreatedAtRoute("DefaultApi", new { id = stock.ID }, stock);
         }
 
         // DELETE: api/Stock/5
-        [ResponseType(typeof(Stock))]
+        [ResponseType(typeof(Store))]
         public IHttpActionResult DeleteStock(int id)
         {
-            Stock stock = db.Stock.Find(id);
+            Store stock = db.Store.Find(id);
             if (stock == null)
             {
                 return NotFound();
             }
 
-            db.Stock.Remove(stock);
+            db.Store.Remove(stock);
             db.SaveChanges();
 
             return Ok(stock);
@@ -120,7 +119,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool StockExists(int id)
         {
-            return db.Stock.Count(e => e.Id == id) > 0;
+            return db.Store.Count(e => e.ID == id) > 0;
         }
     }
 }
