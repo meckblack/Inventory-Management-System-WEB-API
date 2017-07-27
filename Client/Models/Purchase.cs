@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
-namespace Inventory_Management_System.Models
+namespace Client.Models
 {
-    public partial class Purchase
+    public class Purchase
     {
         [Key]
         public int Id { get; set; }
 
-        public Product ProductId  { get; set; }
+        public Product ProductId { get; set; }
 
+        [Display(Name ="Name")]
         public virtual Product PurchaseProduct { get; set; }
 
         public int Quantity { get; set; }

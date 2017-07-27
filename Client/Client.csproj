@@ -209,6 +209,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductClient.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\StoreClient.cs" />
     <Compile Include="Models\Supplier.cs" />
