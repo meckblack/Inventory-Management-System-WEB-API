@@ -210,6 +210,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductClient.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseClient.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\StoreClient.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
