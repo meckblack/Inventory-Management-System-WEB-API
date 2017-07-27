@@ -8,7 +8,7 @@ namespace Client.ViewModels
 {
     public class PurchaseViewModel
     {
-        public Purchase purchae
+        public Purchase purchase
         {
             get;
             set;

@@ -6,10 +6,18 @@ namespace Client.Controllers
 {
     public class SuppliersController : Controller
     {
+        SupplierViewModel svm;
+        SupplierClient sc;
+
+        public SuppliersController()
+        {
+            svm = new SupplierViewModel();
+            sc = new SupplierClient();
+        }
+
         // GET: Suppliers
         public ActionResult Index()
         {
-            SupplierClient sc = new SupplierClient();
             ViewBag.SupplierList = sc.FindAll();
             return View();
         }
@@ -23,7 +31,6 @@ namespace Client.Controllers
         [HttpPost]
         public ActionResult Create(SupplierViewModel svm)
         {
-            SupplierClient sc = new SupplierClient();
             sc.Create(svm.supplier);
             return RedirectToAction("Index");
         }
@@ -31,7 +38,6 @@ namespace Client.Controllers
 
         public ActionResult Delete(int id)
         {
-            SupplierClient sc = new SupplierClient();
             sc.Delete(id);
             return RedirectToAction("Index");
         }
@@ -39,16 +45,13 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            SupplierClient sc = new SupplierClient();
-            SupplierViewModel svm = new SupplierViewModel();
             svm.supplier = sc.Find(id);
             return View("Edit", svm);
         }
 
         [HttpPost]
-        public ActionResult Edit(SupplierViewModel svm)
+        public ActionResult Edit()
         {
-            SupplierClient sc = new SupplierClient();
             sc.Edit(svm.supplier);
             return RedirectToAction("Index");
         }
