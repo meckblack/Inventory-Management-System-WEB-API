@@ -7,18 +7,18 @@ namespace Client.Controllers
     public class CategoryController : Controller
     {
         CategoryClient cc;
+        CategoryViewModel cvm;
 
         public CategoryController()
         {
             cc = new CategoryClient();
-
+            cvm = new CategoryViewModel();
               
         }
 
         // GET: Category
         public ActionResult Index()
         {
-            CategoryClient cc = new CategoryClient();
             ViewBag.CategoryList = cc.FindAll();
             return View();
         }
@@ -38,7 +38,7 @@ namespace Client.Controllers
 
         // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(CategoryViewModel cvm, CategoryClient cc)
+        public ActionResult Create(CategoryViewModel cvm)
         {
             cc.Create(cvm.category);
             return RedirectToAction("Index");
@@ -47,7 +47,6 @@ namespace Client.Controllers
 
         public ActionResult Delete(int id)
         {
-            CategoryClient cc = new CategoryClient();
             cc.Delete(id);
             return RedirectToAction("Index");
         }
@@ -55,7 +54,7 @@ namespace Client.Controllers
 
         // GET: Category/Edit/5
         [HttpGet]
-        public ActionResult Edit(int id, CategoryClient cc, CategoryViewModel cvm)
+        public ActionResult Edit(int id)
         {
             cvm.category = cc.Find(id);
             return View("Edit", cvm);
@@ -63,9 +62,10 @@ namespace Client.Controllers
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(CategoryClient cc, CategoryViewModel cvm)
+        public ActionResult Edit()
         {
             cc.Edit(cvm.category);
+            System.Diagnostics.Debug.WriteLine("New: ", cvm.category.Name);
             return RedirectToAction("Index");
         }
 

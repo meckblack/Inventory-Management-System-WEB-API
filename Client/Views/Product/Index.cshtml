@@ -16,7 +16,7 @@
                 ID
             </th>
             <th>
-                @Html.DisplayFor(model => model.product.ProductName)
+                Name
             </th>
         </tr>
     </thead>
@@ -28,12 +28,12 @@
                     @(x++)
                 </td>
                 <td>
-                    @product.ProductName
+                    @product.Name
                 </td>
                 <td>
-                    <a href="@Url.Action("Delete", "Product", new { id = product.ProductId })">Delete</a>
+                    <a href="@Url.Action("Delete", "Product", new { id = product.Id })">Delete</a>
                     |
-                    <a href="@Url.Action("Edit", "Product", new { id = product.ProductId })">Edit</a>
+                    <a href="@Url.Action("Edit", "Product", new { id = product.Id })">Edit</a>
                 </td>
             </tr>
         }

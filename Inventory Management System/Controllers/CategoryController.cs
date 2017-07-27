@@ -66,9 +66,12 @@ namespace Inventory_Management_System.Controllers
 
             try
             {
+                System.Diagnostics.Debug.WriteLine("Category before " + category.Name);
                 db.SaveChanges();
+                System.Diagnostics.Debug.WriteLine("Category after " + category.Name);
+
             }
-            catch(DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException)
             {
                 if(!CategoryExists(id))
                 {

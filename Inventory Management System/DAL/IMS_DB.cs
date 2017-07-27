@@ -24,7 +24,7 @@ namespace Inventory_Management_System.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-        
 
+        public System.Data.Entity.DbSet<Inventory_Management_System.Models.Purchase> Purchases { get; set; }
     }
 }
