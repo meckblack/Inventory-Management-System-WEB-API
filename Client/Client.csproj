@@ -851,9 +851,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Stock\Index.cshtml" />
-    <Content Include="Views\Stock\Create.cshtml" />
-    <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
     <Content Include="Views\Shared\Partial\LayoutHeader.cshtml" />
     <Content Include="Views\Shared\Partial\LayoutSideBar.cshtml" />
     <Content Include="Template\bootstrap\css\bootstrap.css.map" />
@@ -861,10 +861,12 @@
     <Content Include="Template\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Template\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Template\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Purchase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

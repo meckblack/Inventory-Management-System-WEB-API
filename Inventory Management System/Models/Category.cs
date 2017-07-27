@@ -8,8 +8,6 @@ namespace Inventory_Management_System.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Name field required")]
-        [Display(Name = "Name")]
         public string Name { get; set; }
     }
 }
