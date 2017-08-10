@@ -8,7 +8,7 @@ namespace Inventory_Management_System.Models
         [Key]
         public int Id { get; set; }
 
-        public Product ProductId  { get; set; }
+        public Product ProductId { get; set; }
 
         public virtual Product PurchaseProduct { get; set; }
 

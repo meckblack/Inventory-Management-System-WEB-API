@@ -15,16 +15,13 @@ namespace Inventory_Management_System.DAL
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
-       // public DbSet<Location> Location { get; set; }
         public DbSet<Store> Store { get; set; }
-       // public DbSet<Asset> Asset { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-        public System.Data.Entity.DbSet<Inventory_Management_System.Models.Purchase> Purchases { get; set; }
     }
 }

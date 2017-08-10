@@ -18,16 +18,16 @@ namespace Inventory_Management_System.Controllers
         private IMS_DB db = new IMS_DB();
 
         // GET: api/Purchase
-        public IQueryable<Purchase> GetPurchases()
+        public IQueryable<Purchase> GetPurchase()
         {
-            return db.Purchases;
+            return db.Purchase.Include(p => p.ProductId);
         }
 
         // GET: api/Purchase/5
         [ResponseType(typeof(Purchase))]
         public IHttpActionResult GetPurchase(int id)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = db.Purchase.Find(id);
             if (purchase == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace Inventory_Management_System.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Purchases.Add(purchase);
+            db.Purchase.Add(purchase);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = purchase.Id }, purchase);
@@ -90,13 +90,13 @@ namespace Inventory_Management_System.Controllers
         [ResponseType(typeof(Purchase))]
         public IHttpActionResult DeletePurchase(int id)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = db.Purchase.Find(id);
             if (purchase == null)
             {
                 return NotFound();
             }
 
-            db.Purchases.Remove(purchase);
+            db.Purchase.Remove(purchase);
             db.SaveChanges();
 
             return Ok(purchase);
@@ -113,7 +113,7 @@ namespace Inventory_Management_System.Controllers
 
         private bool PurchaseExists(int id)
         {
-            return db.Purchases.Count(e => e.Id == id) > 0;
+            return db.Purchase.Count(e => e.Id == id) > 0;
         }
     }
 }
