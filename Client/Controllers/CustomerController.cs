@@ -1,49 +1,59 @@
 ﻿using System.Web.Mvc;
 using Client.Models;
 using Client.ViewModels;
+using System.Linq;
 
 namespace Client.Controllers
 {
     public class CustomerController : Controller
     {
+        CustomerClient cuc;
+        public CustomerController()
+        {
+            cuc = new CustomerClient();
+        }
+
         // GET: Customer
         public ActionResult Index()
         {
-            CustomerClient cc = new CustomerClient();
-            ViewBag.CustomerList = cc.FindAll();
+            ViewBag.CustomerList = cuc.FindAll().OrderBy(s => s.Name);
             return View();
         }
 
-        // GET: Stock/Details/5
-        public ActionResult Details(int Id)
-        {
-            CustomerClient cc = new CustomerClient();
-            ViewBag.CustomerDetail = cc.Find(Id);
-            return View("Details");
-        }
+        //// GET: Stock/Details/5
+        //public ActionResult Details(int Id)
+        //{
+        //    CustomerClient cc = new CustomerClient();
+        //    ViewBag.CustomerDetail = cc.Find(Id);
+        //    return View("Details");
+        //}
 
         // GET: Stock/Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View("Create");
+            var cuvm = new CustomerViewModel();
+            return PartialView("Create", cuvm);
         }
 
         // POST: Stock/Create
         [HttpPost]
-        public ActionResult Create(CustomerViewModel cvm)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CustomerViewModel cuvm)
         {
-            CustomerClient cc = new CustomerClient();
-            cc.Create(cvm.customer);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                cuc.Create(cuvm.customer);
+                return Json(new { success = true });
+            }
 
+            return PartialView("Create", cuvm);
         }
 
         // GET: Stock/Delete/5
         public ActionResult Delete(int id)
         {
-            CustomerClient cc = new CustomerClient();
-            cc.Delete(id);
+            cuc.Delete(id);
             return RedirectToAction("Index");
         }
 
@@ -51,20 +61,23 @@ namespace Client.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            CustomerClient cc = new CustomerClient();
-            CustomerViewModel cvm = new CustomerViewModel();
-            cvm.customer = cc.Find(id); 
-            return View("Edit", cvm);
+            CustomerViewModel cuvm = new CustomerViewModel();
+            cuvm.customer = cuc.Find(id); 
+            return PartialView("Edit", cuvm);
         }
 
         // POST: Stock/Edit/5
         [HttpPost]
-        public ActionResult Edit()
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CustomerViewModel cuvm)
         {
-            CustomerViewModel cvm = new CustomerViewModel();
-            CustomerClient cc = new CustomerClient();
-            cc.Edit(cvm.customer);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                cuc.Edit(cuvm.customer);
+                return Json(new { success = true });
+            }
+
+            return PartialView("Create", cuvm);
         }
     }
 }

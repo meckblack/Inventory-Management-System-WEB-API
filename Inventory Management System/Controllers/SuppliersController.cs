@@ -55,7 +55,7 @@ namespace Inventory_Management_System.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            supplier = new Supplier();
             if (id != supplier.Id)
             {
                 return BadRequest();

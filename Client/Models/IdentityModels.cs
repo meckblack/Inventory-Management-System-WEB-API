@@ -29,5 +29,7 @@ namespace Client.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Client.Models.Customer> Customers { get; set; }
     }
 }

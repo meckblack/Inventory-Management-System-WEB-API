@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Client.Models;
 using Client.ViewModels;
+using System.Linq;
 
 namespace Client.Controllers
 {
@@ -18,7 +19,7 @@ namespace Client.Controllers
         // GET: Suppliers
         public ActionResult Index()
         {
-            ViewBag.SupplierList = sc.FindAll();
+            ViewBag.SupplierList = sc.FindAll().OrderBy(s => s.Name);
             return View();
         }
 

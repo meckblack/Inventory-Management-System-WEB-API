@@ -9,6 +9,7 @@ using System.Web.Http.Description;
 
 namespace Inventory_Management_System.Controllers
 {
+    [RoutePrefix("api/customer")]
     public class CustomerController : ApiController
     {
         private IMS_DB db = new IMS_DB();
@@ -21,6 +22,7 @@ namespace Inventory_Management_System.Controllers
         }
 
         // GET api/Employee
+        [Route("readall")]
         public IQueryable<Customer> GetCustomer()
         {
             return db.Customer;
@@ -40,6 +42,7 @@ namespace Inventory_Management_System.Controllers
         }
 
         // POST: api/Customer
+        [Route("create")]
         [ResponseType(typeof(Customer))]
         public IHttpActionResult PostCustomer (Customer customer)
         {
@@ -56,7 +59,7 @@ namespace Inventory_Management_System.Controllers
 
         //PUT: api/Customer/5
         [ResponseType(typeof(Customer))]
-        public IHttpActionResult PutCustomer (int id)
+        public IHttpActionResult PutCustomer (int id, Customer customer)
         {
             if(!ModelState.IsValid)
             {
@@ -93,6 +96,7 @@ namespace Inventory_Management_System.Controllers
         {
             return db.Customer.Count(c => c.Id == id) > 0;
         }
+
 
         //DELETE: api/Customer/5
         [ResponseType(typeof(Customer))]

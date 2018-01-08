@@ -8,32 +8,32 @@
 
 @using (Html.BeginForm("Edit", "Customer", FormMethod.Post))
 {
-    @Html.HiddenFor(model => model.customer.CustomerId)
+    @Html.HiddenFor(model => model.customer.Id)
 
     <table cellpadding="2" cellspacing="2">
         <thead>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.customer.CustomerName)
+                    Name
                 </th>
                 <td>
-                    @Html.TextBoxFor(model => model.customer.CustomerName)
+                    @Html.TextBoxFor(model => model.customer.Name)
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.customer.CustomerContact)
+                   Phone Number
                 </th>
                 <td>
-                    @Html.TextBoxFor(model => model.customer.CustomerContact)
+                    @Html.TextBoxFor(model => model.customer.Contact)
                 </td>
             </tr>
             <tr>
                 <th>
-                    @Html.LabelFor(model => model.customer.CustomerAddress)
+                    Address
                 </th>
                 <td>
-                    @Html.TextBoxFor(model => model.customer.CustomerAddress)
+                    @Html.TextBoxFor(model => model.customer.Address)
                 </td>
             </tr>
             <tr>

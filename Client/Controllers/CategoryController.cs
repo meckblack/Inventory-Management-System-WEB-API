@@ -65,7 +65,6 @@ namespace Client.Controllers
         public ActionResult Edit()
         {
             cc.Edit(cvm.category);
-            System.Diagnostics.Debug.WriteLine("New: ", cvm.category.Name);
             return RedirectToAction("Index");
         }
 

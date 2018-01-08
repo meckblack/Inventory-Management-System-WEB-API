@@ -17,6 +17,7 @@ namespace Inventory_Management_System.DAL
         public DbSet<Product> Product { get; set; }
         public DbSet<Store> Store { get; set; }
         public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<Project> Project { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
